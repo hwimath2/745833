@@ -1,0 +1,19 @@
+// 2. 게임 종료 시 최종 결과와 '전송하기' 버튼 표시
+function endGame(msg){
+  clearInterval(overallTimer);
+  if(energyTimer) clearInterval(energyTimer);
+  document.getElementById('quizContainer').classList.add('hidden');
+  document.getElementById('energyBar').classList.add('hidden');
+  document.getElementById('restartBtn').classList.remove('hidden');
+  
+  // 최종 결과 영역 생성
+  let finalDiv = document.createElement('div');
+  finalDiv.id = 'finalResult';
+  finalDiv.innerHTML = `<h2>게임 종료!</h2>
+                        <p>${msg}</p>
+                        <p>최종 점수: ${score}</p>
+                        <p>전체 진행 시간: ${overallTime}초</p>
+                        <button class="start-btn" onclick="submitData()">전송하기</button>
+                        <div id="response" style="margin-top:10px;"></div>`;
+  document.querySelector('.container').appendChild(finalDiv);
+}
